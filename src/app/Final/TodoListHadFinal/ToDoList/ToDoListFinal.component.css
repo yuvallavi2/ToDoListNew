@@ -1,0 +1,35 @@
+/*this is a component css*/
+
+.ToDoListFinalProps {}
+
+.Table1048577Props {
+    height: 800px;
+    overflow-y: scroll;
+    border: lightskyblue solid 1px;
+}
+
+.Table1048577_table_rowProps {}
+
+.Table1048577_table_rowProps:hover {
+    background-color: #EEEEEE;
+}
+
+.selected {
+    background: #F5F5F5;
+}
+
+.Column1048579Props {}
+
+.DescriptionProps {}
+
+.ToDoDateProps {}
+
+.IsDoneProps {}
+
+.Button1048583Props {}
+
+.cbPriorityProps {}
+
+.pbSaveProps {}
+
+.pbCancelProps {}

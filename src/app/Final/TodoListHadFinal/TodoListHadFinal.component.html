@@ -1,0 +1,51 @@
+<form
+  novalidate
+  [formGroup]="screenFormGroup"
+>
+  <mat-toolbar color="primary">
+    <div class="container">
+      <img src="../../../assets/magic-logo.png" class="logo"/>
+      Todo List Demo
+      <!-- This fills the remaining space of the current row -->
+    </div>
+  </mat-toolbar>
+  <div
+    magic="TodoListHadFinal"
+    class="TodoListHadFinalProps container"
+  >
+    <div
+      magic="gAddToTo"
+      class="gAddToToProps"
+    >
+      <mat-form-field style="width: 400px">
+        <input
+          matInput
+          placeholder="Task description"
+          type="text"
+          formControlName="NewToDo"
+          magic="NewToDo"
+          class="NewToDoProps"
+        />
+      </mat-form-field>
+      <button mat-raised-button color="primary"
+              magic="bAddToDo"
+              class="bAddToDoProps"
+      >
+        AddToDo
+      </button>
+    </div>
+    <ndc-dynamic
+      magic="MainCanvas"
+      class="MainCanvasProps"
+      [ndcDynamicComponent]="mgGetComp('MainCanvas')"
+      [ndcDynamicInputs]="mgGetParameters('MainCanvas')"
+    >
+    </ndc-dynamic>
+    <div
+      magic="gTotals"
+      class="gTotalsProps"
+    >
+      Total : {{mgGetValue('TotalDone')}} / {{mgGetValue('TotalRecords')}}
+    </div>
+  </div>
+</form>

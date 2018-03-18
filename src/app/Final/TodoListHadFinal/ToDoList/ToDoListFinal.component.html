@@ -1,0 +1,101 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="ToDoListFinal"
+        class="ToDoListFinalProps"
+    >
+        <div
+            class="Table1048577"
+            magic="Table1048577"
+            class="Table1048577Props"
+            infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="500"
+            (scrolled)="onScrollDown()"
+            [scrollWindow]="false"
+        >
+            <div *ngFor="let row of task.Records.list">
+                <div
+                    *ngIf="mgIfRowCreated(row.rowId)"
+                    id="row"
+                >
+                    <form
+                        [formGroup]="mgGetFormGroupByRow(row.rowId)"
+                        class="Table1048577_table_rowProps"
+                        [ngClass]="{ 'selected': isRowSelected('Table1048577', row.rowId)}"
+                    >
+                        <div
+                            magic="Column1048579"
+                            class="Column1048579Props"
+                        >
+                            <label
+                                magic="Description"
+                                [rowId]="row.rowId"
+                                class="DescriptionProps hidden_border"
+                            >
+                                {{mgGetValue('Description', row.rowId)}}
+                                </label>
+                                <p-calendar
+                                    formControlName="ToDoDate"
+                                    magic="ToDoDate"
+                                    [rowId]="row.rowId"
+                                    class="ToDoDateProps hidden_border"
+                                ></p-calendar>
+                                    <div
+                                        magic="IsDone"
+                                        [rowId]="row.rowId"
+                                        class="IsDoneProps"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            id="IsDone"
+                                            formControlName="IsDone"
+                                            (change)="mgOnCheckChanged($event,'IsDone', row.rowId)"
+                                        />
+                                        <label for="IsDone">
+        
+    </label>
+            </div>
+            <input
+                type="button"
+                magic="Button1048583"
+                [rowId]="row.rowId"
+                class="Button1048583Props"
+            />
+            <select
+                (change)="mgOnSelectionChanged($event,'cbPriority')"
+                value="mgGetSelectedValue('cbPriority')"
+                magic="cbPriority"
+                [rowId]="row.rowId"
+                class="cbPriorityProps"
+                formControlName="cbPriority"
+            >
+                <option
+                    *ngFor="let o of mgGetListboxValues('cbPriority');"
+                    [selected]="o.index == mgGetSelectedValue('cbPriority')"
+                    [value]="o.index"
+                >
+                    {{o.realString}}
+                    </option>
+                    </select>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    <input
+                        type="button"
+                        magic="pbSave"
+                        class="pbSaveProps"
+                        value=Save
+                    />
+                    <input
+                        type="button"
+                        magic="pbCancel"
+                        class="pbCancelProps"
+                        value=Cancel
+                    />
+                    </div>
+                    </form>
