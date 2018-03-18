@@ -37,12 +37,15 @@
             </label>
           </td>
           <td>
-            <p-calendar
-              formControlName="ToDoDate"
-              magic="ToDoDate"
-              [rowId]="row.rowId"
-              class="ToDoDateProps hidden_border"
-            ></p-calendar>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                     formControlName="ToDoDate"
+                     magic="ToDoDate"
+                     [rowId]="row.rowId"
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </td>
           <td>
             <select
@@ -63,28 +66,30 @@
             </select>
           </td>
           <td>
-            <div
+            <mat-checkbox
               magic="IsDone"
               [rowId]="row.rowId"
-              class="IsDoneProps"
+              formControlName="IsDone"
+              (change)="mgOnCheckChanged($event,'IsDone', row.rowId)"
             >
-              <input
-                type="checkbox"
-                id="IsDone"
-                formControlName="IsDone"
-                (change)="mgOnCheckChanged($event,'IsDone', row.rowId)"
-              />
-              <label for="IsDone">
-
-              </label>
-            </div>
+            </mat-checkbox>
           </td>
-          <td><input
-            type="button"
-            magic="Button1048583"
-            [rowId]="row.rowId"
-            class="Button1048583Props"
-          /></td>
+          <td>
+            <button
+              mat-icon-button
+              color="warn"
+              magic="Button1048583"
+              [rowId]="row.rowId"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+            <!--  <input
+              type="button"
+              magic="Button1048583"
+              [rowId]="row.rowId"
+              class="Button1048583Props"
+            />-->
+          </td>
         </tr>
       </ng-container>
       </tbody>

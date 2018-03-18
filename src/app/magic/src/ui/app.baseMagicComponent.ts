@@ -179,8 +179,8 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
       case StorageAttribute.BOOLEAN: {
         let val1: boolean;
         if (typeof val === 'string')
-          val1 = NString.Equals(val, 'true', true) ? true : false;
-        return val1;
+          return NString.Equals(val, 'true', true) ? true : false;
+        return val;
         }
 
       default:
@@ -378,7 +378,10 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
     if(typeof rowId === "undefined")
       rowId = 0;
     let guiEvent: GuiEvent = new GuiEvent("selectionchanged", idx, rowId);
-    guiEvent.Value = (<any>(event.target)).checked ? "1" : "0";
+    if(typeof event.target === "undefined")
+      guiEvent.Value = (<any>(event)).checked ? "1" : "0";
+    else
+      guiEvent.Value = (<any>(event.target)).checked ? "1" : "0";
     this.task.insertEvent(guiEvent);
   }
 
