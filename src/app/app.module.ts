@@ -19,6 +19,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material";
+
 
 const comps = ComponentsList.getAllComponents();
 
@@ -44,7 +47,8 @@ const comps = ComponentsList.getAllComponents();
      MatButtonModule,
      MatCheckboxModule,
      MatIconModule,
-
+     MatDatepickerModule,
+     MatNativeDateModule
    ],
    exports     : [FormsModule, ReactiveFormsModule, InfiniteScrollModule],
    providers   : [],

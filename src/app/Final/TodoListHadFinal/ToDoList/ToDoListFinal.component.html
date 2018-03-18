@@ -12,6 +12,8 @@
       <tr>
         <td>#</td>
         <td>Description</td>
+        <td>End D.</td>
+        <td>Priority</td>
         <td>Done</td>
         <td>Actions</td>
       </tr>
@@ -23,7 +25,7 @@
           *ngIf="mgIfRowCreated(row.rowId)"
           [formGroup]="mgGetFormGroupByRow(row.rowId)"
           [ngClass]="{ 'selected': isRowSelected('Table1048577', row.rowId)}"
-          >
+        >
           <td>{{row.rowId}}</td>
           <td>
             <label
@@ -33,6 +35,32 @@
             >
               {{mgGetValue('Description', row.rowId)}}
             </label>
+          </td>
+          <td>
+            <p-calendar
+              formControlName="ToDoDate"
+              magic="ToDoDate"
+              [rowId]="row.rowId"
+              class="ToDoDateProps hidden_border"
+            ></p-calendar>
+          </td>
+          <td>
+            <select
+              (change)="mgOnSelectionChanged($event,'cbPriority')"
+              value="mgGetSelectedValue('cbPriority')"
+              magic="cbPriority"
+              [rowId]="row.rowId"
+              class="cbPriorityProps"
+              formControlName="cbPriority"
+            >
+              <option
+                *ngFor="let o of mgGetListboxValues('cbPriority');"
+                [selected]="o.index == mgGetSelectedValue('cbPriority')"
+                [value]="o.index"
+              >
+                {{o.realString}}
+              </option>
+            </select>
           </td>
           <td>
             <div
